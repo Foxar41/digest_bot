@@ -24,7 +24,6 @@ def init() -> None:
             """
             CREATE TABLE IF NOT EXISTS users (
                 user_id   INTEGER PRIMARY KEY,
-                tz        TEXT NOT NULL DEFAULT 'Europe/Moscow',
                 send_time TEXT NOT NULL DEFAULT '09:00',
                 interests TEXT NOT NULL DEFAULT '',
                 last_sent_date TEXT NOT NULL DEFAULT ''
@@ -82,7 +81,7 @@ def all_users():
 
 
 def update_user(user_id: int, **fields) -> None:
-    allowed = {"tz", "send_time", "interests", "last_sent_date"}
+    allowed = {"send_time", "interests", "last_sent_date"}
     fields = {k: v for k, v in fields.items() if k in allowed}
     if not fields:
         return

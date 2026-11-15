@@ -176,17 +176,6 @@ def cmd_time(m: Message):
     bot.reply_to(m, f"Дайджест будет приходить в {h:02d}:{mi:02d}.")
 
 
-@bot.message_handler(commands=["tz"])
-def cmd_tz(m: Message):
-    tz = get_args(m)
-    try:
-        ZoneInfo(tz)
-    except Exception:
-        return bot.reply_to(m, "Неизвестный пояс. Пример: /tz Europe/Berlin")
-    db.ensure_user(m.from_user.id)
-    db.update_user(m.from_user.id, tz=tz)
-    bot.reply_to(m, "Часовой пояс сохранён.")
-
 
 def parse_topics(text: str) -> list[str]:
     """'технологии, наука; спорт' -> ['технологии', 'наука', 'спорт']"""
