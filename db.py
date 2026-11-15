@@ -19,6 +19,8 @@ def connect():
 
 
 def init() -> None:
+    # создаём папку для базы (например, /data на хостинге), если её ещё нет
+    os.makedirs(os.path.dirname(os.path.abspath(DB_PATH)), exist_ok=True)
     with connect() as c:
         c.executescript(
             """
