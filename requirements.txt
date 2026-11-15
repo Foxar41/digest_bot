@@ -1,0 +1,6 @@
+pyTelegramBotAPI>=4.23
+feedparser>=6.0
+groq>=0.11
+python-dotenv>=1.0
+requests>=2.31
+tzdata  # нужен для часовых поясов на Windows
